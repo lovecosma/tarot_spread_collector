@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+resp = RestClient.get("https://rws-cards-api.herokuapp.com/api/v1/cards")
+cardsData = JSON.parse(resp)["cards"]
+
+
+cardsData.each do |card_hash|
+    Card.create(category: card_hash["type"],
+    name_short: card_hash["name_short"],
+    name: card_hash["name"],
+    value: card_hash["value"],
+    value_int: card_hash["value_int"],
+    meaning_up: card_hash["meaning_up"],
+    meaning_rev: card_hash["meaning_rev"],
+    desc: card_hash["desc"]
+    )
+end
