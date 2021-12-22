@@ -3,7 +3,7 @@ const cardsReducer = (state={cards: []}, action) => {
         case "ADDING_CARDS":
             return {
                 ...state,
-                cards: action.cards
+                cards: [...action.cards]
             } 
         default:
             return state

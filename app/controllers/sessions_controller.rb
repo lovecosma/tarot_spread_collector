@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :ok
         else   
-            render json: {errors: user.errors.full_messages}
+            render json: {errors: "Invalida login info"}
         end
     end
 
